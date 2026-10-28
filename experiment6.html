@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiment 6 - Bookstore Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff3e0;
+            text-align: center;
+        }
+
+        .box {
+            background-color: white;
+            width: 320px;
+            margin: 70px auto;
+            padding: 25px;
+            border: 2px solid #d97706;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #c65d18;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #d97706;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #c65d18;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #msg {
+            color: #c65d18;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Online Bookstore</h2>
+    <h3>Registration Form</h3>
+
+    <form onsubmit="return validateForm()">
+        <input type="text" id="name"
+               placeholder="Enter your name" required>
+
+        <input type="password" id="password"
+               placeholder="Enter password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p id="msg"></p>
+</div>
+
+<script>
+    function validateForm() {
+        var name = document.getElementById("name").value.trim();
+        var password = document.getElementById("password").value;
+        var msg = document.getElementById("msg");
+
+        var letters = name.replace(/ /g, "");
+
+        if (!/^[A-Za-z ]+$/.test(name) || letters.length < 6) {
+            msg.innerHTML =
+                "Name must contain alphabets and at least 6 letters.";
+            return false;
+        }
+
+        if (password.length < 6) {
+            msg.innerHTML =
+                "Password must be at least 6 characters long.";
+            return false;
+        }
+
+        msg.innerHTML = "Registration details are valid!";
+        return false;
+    }
+</script>
+
+</body>
+</html>
